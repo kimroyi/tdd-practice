@@ -22,7 +22,7 @@ public class PasswordValidatorTest {
 
     @Test
     @DisplayName("여러 비밀번호 유효성을 검사하고 결과 출력")
-    void testValidatePasswords() {
+    void validatePasswords() {
         // 테스트할 비밀번호 목록
         String[] testPasswords = {
                 "Abc123!", "111111", "121212", "qwerty", "Aa1@345", "A1b@cde", "Password123!", "qwe123RT!", "121212Rr!"
@@ -36,7 +36,7 @@ public class PasswordValidatorTest {
 
     @Test
     @DisplayName("유효한 비밀번호 테스트")
-    public void testValidPasswords() {
+    public void validPasswords() {
         assertTrue(isValidPassword("Aa1@56"));
         assertTrue(isValidPassword("Valid1!"));
         assertTrue(isValidPassword("Str0ng#"));
@@ -44,13 +44,13 @@ public class PasswordValidatorTest {
 
     @Test
     @DisplayName("길이가 충분하지 않은 비밀번호 테스트")
-    public void testInvalidPasswordsDueToLength() {
+    public void shortPasswords() {
         assertFalse(isValidPassword("Aa1!"));
     }
 
     @Test
     @DisplayName("문자 유형이 누락된 비밀번호 테스트")
-    public void testInvalidPasswordsDueToMissingCharacterTypes() {
+    public void missingCharacterTypes() {
         assertFalse(isValidPassword("aaaaaa!"));
         assertFalse(isValidPassword("AAAAAA!"));
         assertFalse(isValidPassword("111111!"));
@@ -59,21 +59,21 @@ public class PasswordValidatorTest {
 
     @Test
     @DisplayName("반복된 문자열이 포함된 비밀번호 테스트")
-    public void testInvalidPasswordsDueToRepeatedString() {
+    public void repeatedStrings() {
         assertFalse(isValidPassword("111111"));
         assertFalse(isValidPassword("2222Rr!"));
     }
 
     @Test
     @DisplayName("반복된 패턴이 포함된 비밀번호 테스트")
-    public void testInvalidPasswordsDueToRepeatedPattern() {
+    public void repeatedPatterns() {
         assertFalse(isValidPassword("121212Rr!"));
         assertFalse(isValidPassword("abcabcabcD1!"));
     }
 
     @Test
     @DisplayName("연속적인 키보드 문자가 포함된 비밀번호 테스트")
-    public void testInvalidPasswordsDueToSequentialKeys() {
+    public void sequentialKeys() {
         assertFalse(isValidPassword("qwertyR1!"));
         assertFalse(isValidPassword("asdfgH1!"));
         assertFalse(isValidPassword("zxcvbnR1!"));
@@ -81,7 +81,7 @@ public class PasswordValidatorTest {
 
     @Test
     @DisplayName("기타 유효하지 않은 비밀번호 테스트")
-    public void testAdditionalInvalidPasswords() {
+    public void additionalInvalidPasswords() {
         assertFalse(isValidPassword("qwerRr!"));
         assertFalse(isValidPassword("aaaaaA1!"));
         assertFalse(isValidPassword("12345A!"));
